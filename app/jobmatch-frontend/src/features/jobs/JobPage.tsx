@@ -1,60 +1,57 @@
-import React, { useState } from 'react';
-import Button from '../../components/common/Button';
-import Input from '../../components/common/Input';
-import './Login.css';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import type { JobData } from './JobNewPage';
+import './JobPage.css';
 
-const JobPage: React.FC = () => {
-  const [jobname, setJobname] = useState('');
-  const [overview, setOverview] = useState('');
-  const [skillset, setSkillset] = useState('');
-  const [place, setPlace] = useState('');
+interface Props {
+  jobs: JobData[];
+}
 
-  const handleJobSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('案件を登録:');
-    // ここで案件登録の処理を実装
-  };
+const JobPage: React.FC<Props> = ({ jobs }) => {
+  const navigate = useNavigate();
 
   return (
-    <div className="content">
-        <div className="logo">
-            <h1 className="logo-text">JobMatching</h1>
+    <div className="pc-layout">
+      <nav className="pc-nav">
+        <span className="pc-nav-logo">JobMatching</span>
+        <span className="pc-nav-sep">|</span>
+        <span className="pc-nav-page">案件一覧</span>
+      </nav>
+
+      <main className="pc-main">
+        <div className="job-list-table-wrapper">
+          <table className="job-list-table">
+            <thead>
+              <tr>
+                <th>日付</th>
+                <th>案件名</th>
+                <th>担当営業</th>
+              </tr>
+            </thead>
+            <tbody>
+              {jobs.length === 0 ? (
+                <tr>
+                  <td colSpan={3} className="job-list-empty">案件が登録されていません</td>
+                </tr>
+              ) : (
+                jobs.map((job) => (
+                  <tr
+                    key={job.id}
+                    className="job-list-row"
+                    onClick={() => navigate(`/jobs/${job.id}`, { state: { job } })}
+                  >
+                    <td>{job.date}</td>
+                    <td>{job.overview.length > 40 ? job.overview.slice(0, 40) + '…' : job.overview}</td>
+                    <td>{job.salesRep}</td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
         </div>
+      </main>
 
-
-        <form onSubmit={handleJobSubmit} className="login-form">
-          <Input
-            type="text"
-            label="案件名"
-            value={jobname}
-            onChange={(e) => setJobname(e.target.value)}
-          />
-
-          <Input
-            type="text"
-            label="概要"
-            value={overview}
-            onChange={(e) => setOverview(e.target.value)}
-          />
-
-          <Input
-            type="text"
-            label="スキルセット"
-            value={skillset}
-            onChange={(e) => setSkillset(e.target.value)}
-          />
-
-          <Input
-            type="text"
-            label="場所"
-            value={place}
-            onChange={(e) => setPlace(e.target.value)}
-          />
-
-          <Button type="submit" variant="primary" fullWidth>
-            登録
-          </Button>
-        </form>
+      <button className="fab" onClick={() => navigate('/jobs/new')} aria-label="新規登録">＋</button>
     </div>
   );
 };
