@@ -29,7 +29,7 @@ const JobPage: React.FC<Props> = ({ jobs }) => {
               </tr>
             </thead>
             <tbody>
-              {jobs.length === 0 ? (
+              {/* {jobs.length === 0 ? (
                 <tr>
                   <td colSpan={3} className="job-list-empty">案件が登録されていません</td>
                 </tr>
@@ -45,8 +45,26 @@ const JobPage: React.FC<Props> = ({ jobs }) => {
                     <td>{job.salesRep}</td>
                   </tr>
                 ))
-              )}
+              )} */}
             </tbody>
+            <tbody>
+              <tr className="job-list-row">
+                <td>2025年5月17日</td>
+                <td>イベント系テスト案件</td>
+                <td>日野下</td>
+              </tr>
+              <tr className="job-list-row">
+                <td>2026年1月13日</td>
+                <td>飲食系開発案件</td>
+                <td>村野</td>
+              </tr>
+              <tr className="job-list-row">
+                <td>2025年8月31日</td>
+                <td>教育系システムインフラ構築案件</td>
+                <td>大沢</td>
+              </tr>
+            </tbody>
+
           </table>
         </div>
       </main>
