@@ -1,0 +1,137 @@
+/* ===== PC Layout ===== */
+.pc-layout {
+  min-height: 100vh;
+  background-color: #f0f2f5;
+  display: flex;
+  flex-direction: column;
+}
+
+.pc-nav {
+  height: 60px;
+  background-color: #0f2847;
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+  gap: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  flex-shrink: 0;
+}
+
+.pc-nav-logo {
+  font-size: 20px;
+  font-weight: 700;
+  color: white;
+  letter-spacing: 0.5px;
+}
+
+.pc-nav-sep {
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 18px;
+}
+
+.pc-nav-page {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.pc-main {
+  flex: 1;
+  padding: 40px 48px;
+  position: relative;
+}
+
+/* ===== Table ===== */
+.job-list-table-wrapper {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.job-list-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.job-list-table thead tr {
+  background-color: #0f2847;
+  color: white;
+}
+
+.job-list-table th {
+  padding: 16px 28px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.4px;
+}
+
+.job-list-table td {
+  padding: 16px 28px;
+  border-bottom: 1px solid #f0f0f0;
+  color: #333;
+  font-size: 14px;
+}
+
+/* 日付列は幅固定 */
+.job-list-table th:first-child,
+.job-list-table td:first-child {
+  width: 140px;
+  white-space: nowrap;
+}
+
+/* 担当営業列は幅固定 */
+.job-list-table th:last-child,
+.job-list-table td:last-child {
+  width: 180px;
+}
+
+.job-list-row {
+  cursor: pointer;
+  transition: background-color 0.12s;
+}
+
+.job-list-row:hover {
+  background-color: #e8edf4;
+}
+
+.job-list-row:last-child td {
+  border-bottom: none;
+}
+
+.job-list-empty {
+  text-align: center;
+  color: #aaa;
+  padding: 60px 0;
+  font-size: 14px;
+}
+
+/* ===== FAB ===== */
+.fab {
+  position: fixed;
+  bottom: 40px;
+  right: 48px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #0f2847;
+  color: white;
+  font-size: 28px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.fab:hover {
+  background-color: #1a3d6e;
+  transform: scale(1.07);
+}
+
+.fab:active {
+  transform: scale(0.96);
+}

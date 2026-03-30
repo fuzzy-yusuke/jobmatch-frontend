@@ -6,6 +6,7 @@ import JobPage from './features/jobs/JobPage'
 import JobNewPage from './features/jobs/JobNewPage'
 import JobDetailPage from './features/jobs/JobDetailPage'
 import type { JobData } from './features/jobs/JobNewPage'
+import SearchPage from './features/search/SearchPage'
 
 function App() {
   const [jobs, setJobs] = useState<JobData[]>([])
@@ -19,6 +20,7 @@ function App() {
       <Route path="/jobs" element={<JobPage jobs={jobs} />} />
       <Route path="/jobs/new" element={<JobNewPage onRegister={addJob} />} />
       <Route path="/jobs/:id" element={<JobDetailPage />} />
+      <Route path="/search" element={<SearchPage jobs={jobs} />} />
       <Route path="*" element={<Navigate to="/jobs" replace />} />
     </Routes>
   )
